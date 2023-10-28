@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const playerSchema = new mongoose.Schema({
-  // Player'S nickname
-  nickname: {
+  // Player'S username
+  username: {
     type: String,
     trim: true,
   },
