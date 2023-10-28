@@ -25,7 +25,7 @@ InitiateMongoServer();
 // Connect to socket
 io.on('connection', (socket) => {
     console.log('Connected to socket');
-    socket.on('createRoom',({ username }) => {
+    socket.on('createRoom', ({ username }) => {
         console.log(username);
     })
 });
