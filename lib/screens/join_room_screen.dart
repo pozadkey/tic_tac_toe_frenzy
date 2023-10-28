@@ -6,7 +6,7 @@ import '../components/custom_textfield.dart';
 import '../responsive/responsive.dart';
 
 class JoinRoomScreen extends StatefulWidget {
-  static String routeName = '/join-room';  // Join room route
+  static String routeName = '/join-room'; // Join room route
   const JoinRoomScreen({Key? key}) : super(key: key);
 
   @override
@@ -65,7 +65,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               ),
               SizedBox(height: size.height * 0.045),
               CustomButton(
-                onTap: () =>{},
+                onTap: () => {},
                 text: 'Join',
               ),
             ],

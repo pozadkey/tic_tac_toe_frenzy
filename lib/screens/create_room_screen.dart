@@ -3,6 +3,7 @@ import 'package:tic_tac_toe_frenzy/components/custom_text.dart';
 
 import '../components/custom_button.dart';
 import '../components/custom_textfield.dart';
+import '../resources/socket_methods.dart';
 import '../responsive/responsive.dart';
 
 class CreateRoomScreen extends StatefulWidget {
@@ -14,8 +15,11 @@ class CreateRoomScreen extends StatefulWidget {
 }
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
-  final TextEditingController _nameController = TextEditingController();
+  // Username conroller
+  final TextEditingController _usernameController = TextEditingController();
 
+  // Socket methods to listen to data
+  final SocketMethods _socketMethods = SocketMethods();
 
   @override
   void initState() {
@@ -25,11 +29,12 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   @override
   void dispose() {
     super.dispose();
-    _nameController.dispose();
+    _usernameController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Screen size
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -52,14 +57,16 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                 text: 'Create Room',
                 fontSize: 70,
               ),
-              SizedBox(height: size.height * 0.08),
+              SizedBox(height: size.height * 0.05),
               CustomTextField(
-                controller: _nameController,
+                controller: _usernameController,
                 hintText: 'Enter username',
               ),
               SizedBox(height: size.height * 0.045),
               CustomButton(
-                  onTap: () {},
+                  onTap: () => _socketMethods.createRoom(
+                        _usernameController.text,
+                      ),
                   text: 'Create'),
             ],
           ),
