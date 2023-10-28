@@ -4,6 +4,8 @@ import '../components/custom_button.dart';
 import '../responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
+  // Route for Homescreen
+  static String routeName = '/main-menu';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
