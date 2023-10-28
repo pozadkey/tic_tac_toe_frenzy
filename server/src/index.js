@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const roomRoutes = require('./routes/room');
 
 // Start express
 const app = express();
@@ -11,6 +12,9 @@ const port = process.env.PORT || 5000;
 const server = http.createServer(app);
 
 const io = require('socket.io')(server);
+
+// Import Room model
+const Room = require('./models/room');
 
 //Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -25,9 +29,7 @@ InitiateMongoServer();
 // Connect to socket
 io.on('connection', (socket) => {
     console.log('Connected to socket');
-    socket.on('createRoom', ({ username }) => {
-        console.log(username);
-    })
+    roomRoutes(io, socket);
 });
 
 // Start server

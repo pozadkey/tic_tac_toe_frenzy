@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tic_tac_toe_frenzy/provider/room_data_provider.dart';
 import 'package:tic_tac_toe_frenzy/screens/create_room_screen.dart';
+import 'package:tic_tac_toe_frenzy/screens/game_screen.dart';
 import 'package:tic_tac_toe_frenzy/screens/home_screen.dart';
 import 'package:tic_tac_toe_frenzy/screens/join_room_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,19 +19,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: bgColor,
-        ),
-        routes: {
-          HomeScreen.routeName: (context) =>
-              const HomeScreen(), // Home screen route
-          JoinRoomScreen.routeName: (context) =>
-              const JoinRoomScreen(), // Join room route
-          CreateRoomScreen.routeName: (context) =>
-              const CreateRoomScreen(), // Create room route
-        },
-        debugShowCheckedModeBanner: false,
-        initialRoute: HomeScreen.routeName);
+    return ChangeNotifierProvider(
+      create: (context)=> RoomDataProvider(),
+      child: MaterialApp(
+          theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: bgColor,
+          ),
+          routes: {
+            HomeScreen.routeName: (context) =>
+                const HomeScreen(), // Home screen route
+            JoinRoomScreen.routeName: (context) =>
+                const JoinRoomScreen(), // Join room route
+            CreateRoomScreen.routeName: (context) =>
+                const CreateRoomScreen(), // Create room route
+                    GameScreen.routeName: (context) =>
+                const GameScreen(), // Game scren route
+          },
+          debugShowCheckedModeBanner: false,
+          initialRoute: HomeScreen.routeName),
+    );
   }
 }

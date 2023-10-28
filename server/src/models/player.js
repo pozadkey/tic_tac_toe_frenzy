@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const playerSchema = new mongoose.Schema({
-  // Player'S username
+  // Player's username
   username: {
     type: String,
     trim: true,
