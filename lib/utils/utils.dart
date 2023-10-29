@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/game_methods.dart';
+
 void showSnackBar(BuildContext context, String content) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
@@ -18,7 +20,7 @@ void showGameDialog(BuildContext context, String text) {
           actions: [
             TextButton(
               onPressed: () {
-           //    GameMethods().clearBoard(context);
+           GameMethods().clearBoard(context);
                 Navigator.pop(context);
               },
               child: const Text(
