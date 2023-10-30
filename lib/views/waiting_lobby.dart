@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../components/custom_textfield.dart';
@@ -32,18 +33,64 @@ class _WaitingLobbyState extends State<WaitingLobby> {
 
   @override
   Widget build(BuildContext context) {
+    final String textToCopy =
+        roomIdController.text; // Get Room ID from textfield
+
+    // Copy Room ID
+    void copyToClipboard() {
+      Clipboard.setData(ClipboardData(text: textToCopy));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Copied to clipboard: $textToCopy'),
+        ),
+      );
+    }
+
     return Responsive(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Waiting for a player to join...'),
-            const SizedBox(height: 20),
+            const Text(
+              'Waiting for a player to join...',
+              style: TextStyle(
+                  fontSize: 32,
+                  color: Color.fromARGB(255, 216, 216, 216),
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
             CustomTextField(
               controller: roomIdController,
               hintText: '',
               isReadOnly: true,
+              mySuffix: Container(
+                margin: const EdgeInsets.all(8),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 123, 76, 253),
+                    minimumSize: const Size(100, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onPressed: copyToClipboard,
+                  child: const Text(
+                    'Copy',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Copy and share the code with your opponent to start playing. The game will start once your opponent joins.',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 216, 216, 216),
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
