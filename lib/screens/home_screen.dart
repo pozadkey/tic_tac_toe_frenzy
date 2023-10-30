@@ -7,15 +7,15 @@ import '../responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
   // Route for Homescreen
-  static String routeName = '/main-menu';
+  static String routeName = '/home';
   const HomeScreen({Key? key}) : super(key: key);
 
-// Navigate to 'CreateRoom' screen
+  // Navigate to 'CreateRoom' screen
   void createRoom(BuildContext context) {
     Navigator.pushNamed(context, CreateRoomScreen.routeName);
   }
 
-// Navigate to 'Join Room' screen
+  // Navigate to 'Join Room' screen
   void joinRoom(BuildContext context) {
     Navigator.pushNamed(context, JoinRoomScreen.routeName);
   }
@@ -29,11 +29,45 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                'assets/images/logo.png',
+                width: 300,
+              ),
+
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 300,
+                ),
+                child: const Text(
+                  'Tic Tac Toe Frenzy',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 142, 255, 67),
+                    fontSize: 54,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Online Multiplayer Game',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 230, 230, 230),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
               CustomButton(
-                onTap: () => createRoom(context),  // Click to create a room
+                onTap: () => createRoom(context), // Click to create a room
                 text: 'Create Room',
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Standard spacing
               CustomButton(
                 onTap: () => joinRoom(context), // Click to join a room
                 text: 'Join Room',

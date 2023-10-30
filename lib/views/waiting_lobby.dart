@@ -69,7 +69,7 @@ class _WaitingLobbyState extends State<WaitingLobby> {
                 margin: const EdgeInsets.all(8),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 123, 76, 253),
+                    backgroundColor: const Color.fromARGB(255, 142, 255, 67),
                     minimumSize: const Size(100, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
