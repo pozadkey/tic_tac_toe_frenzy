@@ -5,6 +5,7 @@ import '../components/custom_text.dart';
 import '../components/custom_textfield.dart';
 import '../resources/socket_methods.dart';
 import '../responsive/responsive.dart';
+import '../utils/themes/theme.dart';
 
 class JoinRoomScreen extends StatefulWidget {
   static String routeName = '/join-room'; // Join room route
@@ -39,6 +40,16 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+           backgroundColor: bgColor,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: BackButton(
+          color: const Color.fromARGB(255, 142, 255, 67),
+          onPressed: () => Navigator.pop(context),
+        ),
+        centerTitle: true,
+      ),
       body: Responsive(
         child: Container(
           margin: const EdgeInsets.symmetric(
@@ -56,9 +67,9 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                   ),
                 ],
                 text: 'Join Room',
-                fontSize: 70,
+                fontSize: 60,
               ),
-              SizedBox(height: size.height * 0.08),
+              SizedBox(height: size.height * 0.05),
               CustomTextField(
                 controller: _usernameController,
                 hintText: 'Enter Username',

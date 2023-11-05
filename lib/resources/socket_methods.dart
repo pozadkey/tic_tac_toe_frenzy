@@ -19,7 +19,6 @@ class SocketMethods {
       _socketClient.emit('createRoom', {
         'username': username,
       });
-      print(username);
     }
   }
 
@@ -58,7 +57,6 @@ class SocketMethods {
     _socketClient.on('joinRoomSuccess', (room) {
       /*Provider.of<RoomDataProvider>(context, listen: false)
           .updateRoomData(room);*/
-      print(room);
       Navigator.pushNamed(context, GameScreen.routeName);
     });
   }
@@ -106,7 +104,7 @@ class SocketMethods {
   }
 
   // Game points
-   void pointIncreaseListener(BuildContext context) {
+  void pointIncreaseListener(BuildContext context) {
     _socketClient.on('pointIncrease', (playerData) {
       var roomDataProvider =
           Provider.of<RoomDataProvider>(context, listen: false);

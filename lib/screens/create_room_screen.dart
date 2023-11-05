@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe_frenzy/components/custom_text.dart';
+import 'package:tic_tac_toe_frenzy/utils/themes/theme.dart';
 
 import '../components/custom_button.dart';
 import '../components/custom_textfield.dart';
@@ -24,7 +25,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   @override
   void initState() {
     super.initState();
-    _socketMethods.createRoomSuccessListener(context); // Listen to 'Create Room Success'
+    _socketMethods
+        .createRoomSuccessListener(context); // Listen to 'Create Room Success'
   }
 
   @override
@@ -39,6 +41,16 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: bgColor,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        
+        leading: BackButton(
+          color: const Color.fromARGB(255, 142, 255, 67),
+          onPressed: () => Navigator.pop(context),
+        ),
+        centerTitle: true,
+      ),
       body: Responsive(
         child: Container(
           margin: const EdgeInsets.symmetric(
@@ -56,7 +68,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   ),
                 ],
                 text: 'Create Room',
-                fontSize: 70,
+                fontSize: 60,
               ),
               SizedBox(height: size.height * 0.05),
               CustomTextField(

@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.blue,
+            color: Color.fromARGB(255, 142, 255, 67),
             blurRadius: 5,
             spreadRadius: 0,
           )
@@ -27,6 +27,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 142, 255, 67),
           minimumSize: Size(
             width,
             50,
@@ -35,8 +36,10 @@ class CustomButton extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 16,
-          ),
+              fontSize: 24,
+              color: Colors.black,
+              fontFamily: 'SpaceGrotesk',
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

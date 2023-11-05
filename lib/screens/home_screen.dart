@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe_frenzy/screens/create_room_screen.dart';
 import 'package:tic_tac_toe_frenzy/screens/join_room_screen.dart';
+import 'package:tic_tac_toe_frenzy/utils/themes/theme.dart';
 
 import '../components/custom_button.dart';
 import '../responsive/responsive.dart';
@@ -23,20 +24,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       body: Responsive(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Logo Image
               Image.asset(
                 'assets/images/logo.png',
                 width: 300,
               ),
-
               ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxWidth: 300,
+                  maxWidth: 400,
                 ),
                 child: const Text(
                   'Tic Tac Toe Frenzy',
@@ -44,7 +46,14 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Color.fromARGB(255, 142, 255, 67),
                     fontSize: 54,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 40,
+                        color: Color.fromARGB(255, 142, 255, 67),
+                      ),
+                    ],
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'ClashDisplay',
                   ),
                 ),
               ),
@@ -55,10 +64,10 @@ class HomeScreen extends StatelessWidget {
                 'Online Multiplayer Game',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 230, 230, 230),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Color.fromARGB(255, 230, 230, 230),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SpaceGrotesk'),
               ),
               const SizedBox(
                 height: 50,

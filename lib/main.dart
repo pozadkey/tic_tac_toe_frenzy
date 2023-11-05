@@ -7,7 +7,7 @@ import 'package:tic_tac_toe_frenzy/screens/home_screen.dart';
 import 'package:tic_tac_toe_frenzy/screens/join_room_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'utils/theme/colors.dart';
+import 'utils/themes/theme.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: "lib/.env"); // Load the .env file
@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context)=> RoomDataProvider(),
       child: MaterialApp(
-          theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: bgColor,
-          ),
+        theme: theme,
           routes: {
             HomeScreen.routeName: (context) =>
                 const HomeScreen(), // Home screen route

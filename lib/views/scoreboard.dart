@@ -9,6 +9,18 @@ class Scoreboard extends StatelessWidget {
   Widget build(BuildContext context) {
     RoomDataProvider roomDataProvider = Provider.of<RoomDataProvider>(context);
 
+// Player's score style
+    const scoreTextStyle = TextStyle(
+        fontSize: 32,
+        color: Color.fromARGB(255, 142, 255, 67),
+        fontWeight: FontWeight.bold);
+
+// Player's name style
+    const playerTextStyle = TextStyle(
+        fontSize: 24,
+        color: Color.fromARGB(255, 194, 194, 194),
+        fontWeight: FontWeight.bold);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -17,20 +29,9 @@ class Scoreboard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                roomDataProvider.player1.username,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                roomDataProvider.player1.points.toInt().toString(),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
+              Text(roomDataProvider.player1.username, style: playerTextStyle),
+              Text(roomDataProvider.player1.points.toInt().toString(),
+                  style: scoreTextStyle),
             ],
           ),
         ),
@@ -39,20 +40,9 @@ class Scoreboard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                roomDataProvider.player2.username,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                roomDataProvider.player2.points.toInt().toString(),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
+              Text(roomDataProvider.player2.username, style: playerTextStyle),
+              Text(roomDataProvider.player2.points.toInt().toString(),
+                  style: scoreTextStyle),
             ],
           ),
         ),

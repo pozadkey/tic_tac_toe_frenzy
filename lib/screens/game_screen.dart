@@ -36,13 +36,25 @@ class _GameScreeenState extends State<GameScreen> {
           ? const WaitingLobby()
           : SafeArea(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Scoreboard(), // Game scoreboard
+                  const Scoreboard(),
+                  const SizedBox(
+                    height: 20,
+                  ), // Game scoreboard
                   const TicTacToeBoard(), // Game X or O board
                   // Next player's turn
                   Text(
-                      '${roomDataProvider.roomData['turn']['username']}\'s turn'),
+                    '${roomDataProvider.roomData['turn']['username']}\'s turn',
+                    style: const TextStyle(
+                        fontSize: 24,
+                        color: Color.fromARGB(255, 142, 255, 67),
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  )
                 ],
               ),
             ),

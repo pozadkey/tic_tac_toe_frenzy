@@ -15,7 +15,10 @@ class Responsive extends StatelessWidget {
         constraints: const BoxConstraints(
           maxWidth: 600,
         ),
-        child: child,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: child,
+        ),
       ),
     );
   }
