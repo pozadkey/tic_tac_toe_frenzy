@@ -56,6 +56,7 @@ class _WaitingLobbyState extends State<WaitingLobby> {
               'Waiting for a player to join...',
               style: TextStyle(
                   fontSize: 32,
+                  fontFamily: 'ClashDisplay',
                   color: Color.fromARGB(255, 216, 216, 216),
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -78,7 +79,11 @@ class _WaitingLobbyState extends State<WaitingLobby> {
                   onPressed: copyToClipboard,
                   child: const Text(
                     'Copy',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      fontFamily: 'SpaceGrotesk',
+                    ),
                   ),
                 ),
               ),
@@ -88,6 +93,7 @@ class _WaitingLobbyState extends State<WaitingLobby> {
               'Copy and share the code with your opponent to start playing. The game will start once your opponent joins.',
               style: TextStyle(
                 fontSize: 16,
+                fontFamily: 'SpaceGrotesk',
                 color: Color.fromARGB(255, 216, 216, 216),
               ),
               textAlign: TextAlign.center,

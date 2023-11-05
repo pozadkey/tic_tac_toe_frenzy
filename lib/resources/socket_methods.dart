@@ -55,8 +55,8 @@ class SocketMethods {
   // Room joined
   void joinRoomSuccessListener(BuildContext context) {
     _socketClient.on('joinRoomSuccess', (room) {
-      /*Provider.of<RoomDataProvider>(context, listen: false)
-          .updateRoomData(room);*/
+      Provider.of<RoomDataProvider>(context, listen: false)
+          .updateRoomData(room);
       Navigator.pushNamed(context, GameScreen.routeName);
     });
   }

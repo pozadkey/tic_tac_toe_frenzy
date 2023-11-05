@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../provider/room_data_provider.dart';
 import '../resources/socket_methods.dart';
+import '../utils/themes/theme.dart';
 import '../views/scoreboard.dart';
 import '../views/tictactoe_board.dart';
 import '../views/waiting_lobby.dart';
@@ -32,32 +33,43 @@ class _GameScreeenState extends State<GameScreen> {
     // Room data
     RoomDataProvider roomDataProvider = Provider.of<RoomDataProvider>(context);
     return Scaffold(
+      backgroundColor: bgColor,
       body: roomDataProvider.roomData['isJoin']
           ? const WaitingLobby()
           : SafeArea(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Scoreboard(),
-                  const SizedBox(
-                    height: 20,
-                  ), // Game scoreboard
-                  const TicTacToeBoard(), // Game X or O board
-                  // Next player's turn
-                  Text(
-                    '${roomDataProvider.roomData['turn']['username']}\'s turn',
-                    style: const TextStyle(
-                        fontSize: 24,
-                        color: Color.fromARGB(255, 142, 255, 67),
-                        fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
+              child: Center(
+                child: AspectRatio(
+                  aspectRatio: 0.5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Scoreboard(),
+                      const SizedBox(
+                        height: 10,
+                      ), // Game scoreboard
+                      const TicTacToeBoard(), // Game X or O board
+                      // CustomButton(
+                      //   onTap: () {},
+                      //   text: 'Quit game',
+                      // ),
+                      // // Next player's turn
+                      Text(
+                        '${roomDataProvider.roomData['turn']['username']}\'s turn'
+                            .toUpperCase(),
+                        style: const TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 142, 255, 67),
+                            fontFamily: 'ClashDisplay',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 30,
-                  )
-                ],
+                ),
               ),
             ),
     );
   }
 }
+
+///  Text(roomDataProvider.player2.username[0].toUpperCase() + roomDataProvider.player2.username.substring(1), style: playerTextStyle),

@@ -89,7 +89,7 @@ class GameMethods {
         });
       } else {
         // Display player 2 as winner
-        showGameDialog(context, '${roomDataProvider.player2.username} won!');
+        showGameDialog(context, '${roomDataProvider.player2.username} won!',);
         socketClent.emit('winner', {
           'winnerSocketId': roomDataProvider.player2.socketID,
           'roomId': roomDataProvider.roomData['_id'],

@@ -6,8 +6,8 @@ import '../models/player.dart';
 class RoomDataProvider extends ChangeNotifier {
   Map<String, dynamic> _roomData = {}; // Create private class for room data
   // List of available positions of gameboard
-  List<String> displayElement = ['', '', '', '', '', '', '', '', ''];
-  int filledBoxes = 0; // Checked for filled grid
+  final List<String> _displayElement = ['', '', '', '', '', '', '', '', ''];
+  int _filledBoxes = 0; // Checked for filled grid
   // Player 1 infro
   Player _player1 = Player(
     username: '',
@@ -26,9 +26,10 @@ class RoomDataProvider extends ChangeNotifier {
 
   Player get player1 => _player1;
   Player get player2 => _player2;
+  int get filledBoxes => _filledBoxes;
   Map<String, dynamic> get roomData => _roomData;
-  List<String> get displayElements => displayElement;
-  
+  List<String> get displayElements => _displayElement;
+
   // Get room data from listener
   void updateRoomData(Map<String, dynamic> data) {
     _roomData = data;
@@ -49,13 +50,13 @@ class RoomDataProvider extends ChangeNotifier {
 
 // Display updated display element
   void updateDisplayElements(int index, String choice) {
-    displayElement[index] = choice;
-    filledBoxes += 1;
+    _displayElement[index] = choice;
+    _filledBoxes += 1;
     notifyListeners();
   }
 
 // Reset grid
-    void setFilledBoxesTo0() {
-    filledBoxes = 0;
+  void setFilledBoxesTo0() {
+    _filledBoxes = 0;
   }
 }
